@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1637889648 source:g:\programacion\cpp\github\shapes\color\color.cpp
+	"color.h"
+
+1637889509 g:\programacion\cpp\github\shapes\color\color.h
+	"rgb.h"
+
+1637889518 g:\programacion\cpp\github\shapes\color\rgb.h
+
