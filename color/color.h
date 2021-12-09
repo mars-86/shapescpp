@@ -26,13 +26,14 @@ public:
 
 	inline int get_color(void)
 	{
-		return ((_color.r << rgba_r_shift) | (_color.g << rgba_g_shift) | (_color.b << rgba_b_shift)) & rgba_mask;
+		return ((_color.r << rgb_r_shift) | (_color.g << rgb_g_shift) | _color.b) & rgb_mask;
 	}
 
 	inline int get_color_alpha(void)
 	{
-		return ((_color.r << rgba_r_shift) | (_color.g << rgba_g_shift) | (_color.b << rgba_b_shift) | (_color.a << rgba_a_shift)) & rgba_mask;
+		return ((_color.r << rgba_r_shift) | (_color.g << rgba_g_shift) | (_color.b << rgba_b_shift) | _color.a);
 	}
+
 private:
 	RGBA _color;
 };
