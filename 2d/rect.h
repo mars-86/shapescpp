@@ -35,9 +35,17 @@ public:
 	void build(T x, T y, T width, T height)
 	{
 		std::vector<Point2DT<T>> e1 = Line(x, y, x + width, y).get_bounds();
-		std::vector<Point2DT<T>> e2 = Line(x + width, y, x + width, y + height).get_bounds();
+		std::vector<Point2DT<T>> e2 = Line(x + width, y + 1, x + width, y + height - 1).get_bounds();
 		std::vector<Point2DT<T>> e3 = Line(x + width, y + height, x, y + height).get_bounds();
-		std::vector<Point2DT<T>> e4 = Line(x, y + height, x, y).get_bounds();
+		std::vector<Point2DT<T>> e4 = Line(x, y + height - 1, x, y + 1).get_bounds();
+
+#ifdef _DEBUG
+		for (auto i : e1) std::cout << i; std::cout << '\n';
+		for (auto i : e2) std::cout << i; std::cout << '\n';
+		for (auto i : e3) std::cout << i; std::cout << '\n';
+        for (auto i : e4) std::cout << i; std::cout << '\n';
+#endif // _DEBUG
+
 		this->_points.insert(this->_points.end(), e1.begin(), e1.end());
 		this->_points.insert(this->_points.end(), e2.begin(), e2.end());
 		this->_points.insert(this->_points.end(), e3.begin(), e3.end());

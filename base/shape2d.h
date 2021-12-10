@@ -24,14 +24,19 @@ public:
 
 protected:
 	std::vector<Point2DT<T>> _points;
-	friend std::ostream& operator<<(std::ostream& out, const Point2DT<T>& point)
-	{
-		return out << "{" << point.get_x() << ", " << point.get_y() << "}" << std::endl;
-	}
+	template <typename U>
+	friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point);
+
 };
 
 typedef Shape2DT<int> Shape2D;
 typedef Shape2DT<double> Shape2DF;
+
+template <typename T>
+std::ostream& operator<<(std::ostream& out, const Point2DT<T>& point)
+{
+    return out << "{" << point.get_x() << "," << point.get_y() << "}";
+}
 
 } // namespace shapes
 
