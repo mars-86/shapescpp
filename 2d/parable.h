@@ -69,6 +69,16 @@ public:
         // this->draw();
 	}
 
+    void rotate(int angle)
+	{
+
+	}
+
+    void fill(const Color& color)
+    {
+
+    }
+
 private:
 	T _x, _y, _rx, _ry;
 };

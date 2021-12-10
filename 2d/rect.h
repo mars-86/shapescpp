@@ -72,6 +72,16 @@ public:
         this->draw(point.get_x(), point.get_y(), this->get_width(), this->get_height());
 	}
 
+	void rotate(int angle)
+	{
+
+	}
+
+    void fill(const Color& color)
+    {
+
+    }
+
 protected:
 	T _x, _y, _w, _h;
 };
