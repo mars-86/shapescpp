@@ -16,14 +16,14 @@ public:
 	LineT(T x1, T y1, T x2, T y2)
 		: _x1(0), _y1(0), _x2(0), _y2(0)
 	{
-		draw(x1, y1, x2, y2);
+		build(x1, y1, x2, y2);
 	}
 
 	LineT(T x1, T y1, T x2, T y2, const Color& color)
 		: _x1(0), _y1(0), _x2(0), _y2(0)
 	{
 		this->set_color(color.get_rgba());
-		draw(x1, y1, x2, y2);
+		build(x1, y1, x2, y2);
 	}
 
 	~LineT()
@@ -31,7 +31,7 @@ public:
 		this->_points.clear();
 	}
 
-	void draw(T x1, T y1, T x2, T y2)
+	void build(T x1, T y1, T x2, T y2)
 	{
 		T dx = std::abs(x2-x1),
 			sx = x1 < x2 ? 1 : -1,
@@ -78,8 +78,19 @@ public:
 
     void fill(const Color& color) {}
 
+    LineT<T> &operator=(LineT<T> &line)
+    {
+        _x1 = line._x1;
+        _y1 = line._y1;
+        _x2 = line._x2;
+        _y2 = line._y2;
+
+        return *this;
+    }
+
 private:
 	T _x1, _y1, _x2, _y2;
+
 };
 
 typedef LineT<int> Line;

@@ -17,14 +17,14 @@ public:
 	RectT(T x, T y, T width, T height)
 		: _x(x), _y(y), _w(width), _h(height)
 	{
-		draw(x, y, width, height);
+		build(x, y, width, height);
 	}
 
 	RectT(T x, T y, T width, T height, const Color& color)
 		: _x(x), _y(y), _w(width), _h(height)
 	{
 		this->set_color(color.get_rgba());
-		draw(x, y, width, height);
+		build(x, y, width, height);
 	}
 
 	virtual ~RectT()
@@ -32,7 +32,7 @@ public:
 		this->_points.clear();
 	}
 
-	void draw(T x, T y, T width, T height)
+	void build(T x, T y, T width, T height)
 	{
 		std::vector<Point2DT<T>> e1 = Line(x, y, x + width, y).get_bounds();
 		std::vector<Point2DT<T>> e2 = Line(x + width, y, x + width, y + height).get_bounds();
@@ -69,7 +69,7 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        this->draw(point.get_x(), point.get_y(), this->get_width(), this->get_height());
+        this->build(point.get_x(), point.get_y(), this->get_width(), this->get_height());
 	}
 
 	void rotate(int angle)
@@ -82,8 +82,19 @@ public:
 
     }
 
+    RectT<T> &operator=(RectT<T> &rect)
+    {
+        _x = rect._x;
+        _y = rect._y;
+        _w = rect._w;
+        _h = rect._h;
+
+        return *this;
+    }
+
 protected:
 	T _x, _y, _w, _h;
+
 };
 
 typedef RectT<int> Rect;

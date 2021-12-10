@@ -16,14 +16,14 @@ public:
 	SquareT(T x, T y, T size)
 		: RectT<T>(x, y, size, size)
 	{
-		this->draw(x, y, size, size);
+		this->build(x, y, size, size);
 	}
 
 	SquareT(T x, T y, T size, const Color& color)
 		: RectT<T>(x, y, size, size)
 	{
 		this->set_color(color.get_rgba());
-		this->draw(x, y, size, size);
+		this->build(x, y, size, size);
 	}
 
 	~SquareT() {}

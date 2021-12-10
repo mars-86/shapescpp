@@ -8,7 +8,7 @@ using namespace shapes;
 
 int main(void)
 {
-    Rect rect(10, 10, 5, 5);
+    Square rect(10, 10, 5);
 
     auto b = rect.get_bounds();
     for (auto i : b) std::cout << "{" << i.get_x() << " " << i.get_y() << "}";

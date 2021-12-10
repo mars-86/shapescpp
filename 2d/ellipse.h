@@ -15,14 +15,14 @@ public:
 	EllipseT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		draw(x, y, rx, ry);
+		build(x, y, rx, ry);
 	}
 
 	EllipseT(T x, T y, T rx, T ry, const Color& color)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
 		this->set_color(color.get_rgba());
-		draw(x, y, rx, ry);
+		build(x, y, rx, ry);
 	}
 
 	~EllipseT()
@@ -30,7 +30,7 @@ public:
 		this->_points.clear();
 	}
 
-	void draw(T xc, T yc, T rx, T ry)
+	void build(T xc, T yc, T rx, T ry)
 	{
 		T x = 0;
 		T y = ry;
@@ -101,8 +101,19 @@ public:
 
     }
 
+    EllipseT<T> &operator=(EllipseT<T> &ellipse)
+    {
+        _x = ellipse._x;
+        _y = ellipse._y;
+        _rx = ellipse._rx;
+        _ry = ellipse._ry;
+
+        return *this;
+    }
+
 private:
 	T _x, _y, _rx, _ry;
+
 };
 
 typedef EllipseT<int> Ellipse;

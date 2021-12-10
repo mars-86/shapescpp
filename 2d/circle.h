@@ -16,14 +16,14 @@ public:
 	CircleT(T x, T y, T radius)
 		: _x(x), _y(y), _radius(radius)
 	{
-		draw(x, y, radius);
+		build(x, y, radius);
 	}
 
 	CircleT(T x, T y, T radius, const Color& color)
 		: _x(x), _y(y), _radius(radius)
 	{
 		this->set_color(color.get_rgba());
-		draw(x, y, radius);
+		build(x, y, radius);
 	}
 
 	~CircleT()
@@ -31,7 +31,7 @@ public:
 		this->_points.clear();
 	};
 
-	void draw(T x, T y, T radius, T _ = 0)
+	void build(T x, T y, T radius, T _ = 0)
 	{
 		T x0 = 0,
 			y0 = radius,
@@ -85,8 +85,18 @@ public:
 
     }
 
+    CircleT<T> &operator=(CircleT<T> &circle)
+    {
+        _x = circle._x;
+        _y = circle._y;
+        _radius = circle._radius;
+
+        return *this;
+    }
+
 private:
 	T _x, _y, _radius;
+
 };
 
 typedef CircleT<int> Circle;

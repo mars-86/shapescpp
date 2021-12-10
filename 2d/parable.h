@@ -18,14 +18,14 @@ public:
 	ParableT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		draw(x, y, rx, ry);
+		build(x, y, rx, ry);
 	}
 
 	ParableT(T x, T y, T rx, T ry, const Color& color)
 		:  _x(x), _y(y), _rx(rx), _ry(ry)
 	{
 		this->set_color(color.get_rgba());
-		draw(x, y, rx, ry);
+		build(x, y, rx, ry);
 	}
 
 	~ParableT()
@@ -33,7 +33,7 @@ public:
 		this->_points.clear();
 	}
 
-	void draw(T x, T y, T rx, T ry)
+	void build(T x, T y, T rx, T ry)
 	{
 		// Middle point algorithm based
 		T x0 = 0, y0 = 0, p0 = 1;
@@ -79,8 +79,19 @@ public:
 
     }
 
+    ParableT<T> &operator=(ParableT<T> &parable)
+    {
+        _x = parable._x;
+        _y = parable._y;
+        _rx = parable._rx;
+        _ry = parable._ry;
+
+        return *this;
+    }
+
 private:
 	T _x, _y, _rx, _ry;
+
 };
 
 typedef ParableT<int> Parable;
