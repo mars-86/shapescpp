@@ -21,6 +21,7 @@ public:
 
 	const std::vector<Point2DT<T>>& get_bounds(void) const { return _points; }
 	const Point2DT<T>& get_origin(void) const { return _points[0]; }
+    int length(void) const { this->_points.size(); }
 
 protected:
 	std::vector<Point2DT<T>> _points;

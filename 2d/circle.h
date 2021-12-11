@@ -76,7 +76,7 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        // this->draw();
+        this->build(point.get_x(), point.get_y(), this->_radius);
 	}
 
     void rotate(int angle)
@@ -86,7 +86,11 @@ public:
 
     void fill(const Color& color)
     {
-
+        int psize = _points.size()
+        if (psize < 1) return;
+        std::vector<Point2DT<T>>::iterator it = _points.at(1);
+        for (auto i = it; i < psize; ++i)
+            while (*(i - 1).get_y() < (*i).get_y()) _points
     }
 
     CircleT<T> &operator=(CircleT<T> &circle)
