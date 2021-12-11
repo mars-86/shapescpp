@@ -13,14 +13,14 @@ public:
 	CircleT(T x, T y, T radius)
 		: _x(x), _y(y), _radius(radius)
 	{
-		this->_build();
+		_build();
 	}
 
 	CircleT(T x, T y, T radius, const Color& color)
 		: _x(x), _y(y), _radius(radius)
 	{
 		this->set_color(color.get_rgba());
-		this->_build();
+		_build();
 	}
 
 	CircleT(T x, T y, T radius, const Color& color, const Color& inner_color)
@@ -28,7 +28,7 @@ public:
 	{
 		this->set_color(color.get_rgba());
 		this->set_inner_color(inner_color.get_rgba());
-		this->_build();
+		_build();
 	}
 
 	~CircleT()
@@ -51,8 +51,8 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        this->_x = point.get_x(), this->_y = point.get_y();
-        this->_build();
+        _x = point.get_x(), _y = point.get_y();
+        _build();
 	}
 
     void rotate(int angle)

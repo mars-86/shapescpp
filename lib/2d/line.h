@@ -13,14 +13,14 @@ public:
 	LineT(T x1, T y1, T x2, T y2)
 		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
 	{
-		this->_build();
+		_build();
 	}
 
 	LineT(T x1, T y1, T x2, T y2, const Color& color)
 		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
 	{
 		this->set_color(color.get_rgba());
-		this->_build();
+		_build();
 	}
 
 	~LineT()
@@ -43,9 +43,9 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        this->_x1 = point.get_x(), this->_y1 = point.get_y();
-        this->_x2 += _x1, this->_y2 += _y1;
-        this->_build();
+        _x1 = point.get_x(), _y1 = point.get_y();
+        _x2 += _x1, _y2 += _y1;
+        _build();
 	}
 
     void rotate(int angle)
