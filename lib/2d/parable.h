@@ -1,5 +1,5 @@
-#ifndef _SHAPES_2D_PARABLE_INCLUDED_H_
-#define _SHAPES_2D_PARABLE_INCLUDED_H_
+#ifndef _SHAPES_LIB_2D_PARABLE_INCLUDED_H_
+#define _SHAPES_LIB_2D_PARABLE_INCLUDED_H_
 #pragma once
 
 #include <cmath>
@@ -15,14 +15,14 @@ public:
 	ParableT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		this->_build();
+		_build();
 	}
 
 	ParableT(T x, T y, T rx, T ry, const Color& color)
 		:  _x(x), _y(y), _rx(rx), _ry(ry)
 	{
 		this->set_color(color.get_rgba());
-		this->_build();
+		_build();
 	}
 
 	~ParableT()
@@ -45,8 +45,8 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        this->_x = point.get_x(), this->_y = point.get_y();
-        this->_build();
+        _x = point.get_x(), _y = point.get_y();
+        _build();
 	}
 
     void rotate(int angle)
@@ -98,4 +98,4 @@ typedef ParableT<double> ParableF;
 
 } // namespace shapes
 
-#endif // !_SHAPES_2D_PARABLE_INCLUDED_H_
+#endif // !_SHAPES_LIB_2D_PARABLE_INCLUDED_H_

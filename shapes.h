@@ -8,6 +8,7 @@
 #include "lib/2d/parable.h"
 #include "lib/2d/rect.h"
 #include "lib/2d/square.h"
+#include "lib/2d/freehand.h"
 
 #include "lib/color/color.h"
 #include "lib/color/rgb.h"

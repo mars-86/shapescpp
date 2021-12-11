@@ -1,5 +1,5 @@
-#ifndef _SHAPES_2D_SQUARE_INCLUDED_H_
-#define _SHAPES_2D_SQUARE_INCLUDED_H_
+#ifndef _SHAPES_LIB_2D_SQUARE_INCLUDED_H_
+#define _SHAPES_LIB_2D_SQUARE_INCLUDED_H_
 #pragma once
 
 #include "rect.h"
@@ -26,4 +26,4 @@ typedef SquareT<double> SquareF;
 
 } // namespace shapes
 
-#endif // !_SHAPES_2D_SQUARE_INCLUDED_H_
+#endif // !_SHAPES_LIB_2D_SQUARE_INCLUDED_H_
