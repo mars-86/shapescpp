@@ -63,9 +63,9 @@ private:
     {
         typename std::vector<Point2DT<T>>::iterator it = _local_points.begin();
         for (++it; it != _local_points.end(); ++it) {
-            Line ln((it - 1)->get_x(), (it - 1)->get_y(), (it)->get_x() - 1, (it)->get_y() - 1);
+            Line ln((it - 1)->get_x(), (it - 1)->get_y(), (it)->get_x(), (it)->get_y());
             auto np = ln.get_bounds();
-            this->_points.insert(this->_points.end(), np.begin(), np.end());
+            this->_points.insert(this->_points.end(), np.begin(), std::prev(np.end()));
         }
         this->_points.push_back(_local_points.back());
 
