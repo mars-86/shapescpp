@@ -35,6 +35,7 @@
 		</Compiler>
 		<Unit filename="lib/2d/circle.h" />
 		<Unit filename="lib/2d/ellipse.h" />
+		<Unit filename="lib/2d/freehand.h" />
 		<Unit filename="lib/2d/line.h" />
 		<Unit filename="lib/2d/parable.h" />
 		<Unit filename="lib/2d/rect.h" />

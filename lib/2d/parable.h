@@ -1,5 +1,5 @@
-#ifndef _SHAPES_2D_PARABLE_INCLUDED_H_
-#define _SHAPES_2D_PARABLE_INCLUDED_H_
+#ifndef _SHAPES_LIB_2D_PARABLE_INCLUDED_H_
+#define _SHAPES_LIB_2D_PARABLE_INCLUDED_H_
 #pragma once
 
 #include <cmath>
@@ -98,4 +98,4 @@ typedef ParableT<double> ParableF;
 
 } // namespace shapes
 
-#endif // !_SHAPES_2D_PARABLE_INCLUDED_H_
+#endif // !_SHAPES_LIB_2D_PARABLE_INCLUDED_H_

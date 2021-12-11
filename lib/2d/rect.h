@@ -1,5 +1,5 @@
-#ifndef _SHAPES_2D_RECT_INCLUDED_H_
-#define _SHAPES_2D_RECT_INCLUDED_H_
+#ifndef _SHAPES_LIB_2D_RECT_INCLUDED_H_
+#define _SHAPES_LIB_2D_RECT_INCLUDED_H_
 #pragma once
 
 #include <vector>
@@ -116,4 +116,4 @@ typedef RectT<double> RectF;
 
 } // namespace shapes
 
-#endif // !_SHAPES_2D_RECT_INCLUDED_H_
+#endif // !_SHAPES_LIB_2D_RECT_INCLUDED_H_
