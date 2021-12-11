@@ -13,41 +13,19 @@ public:
 	LineT(T x1, T y1, T x2, T y2)
 		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
 	{
-		build(x1, y1, x2, y2);
+		this->_build();
 	}
 
 	LineT(T x1, T y1, T x2, T y2, const Color& color)
-		: _x1(0), _y1(0), _x2(0), _y2(0)
+		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
 	{
 		this->set_color(color.get_rgba());
-		build(x1, y1, x2, y2);
+		this->_build();
 	}
 
 	~LineT()
 	{
 		this->_points.clear();
-	}
-
-	void build(T x1, T y1, T x2, T y2)
-	{
-		T dx = std::abs(x2-x1),
-			sx = x1 < x2 ? 1 : -1,
-			dy = -std::abs(y2 - y1),
-			sy = y1 < y2 ? 1 : -1,
-			e1 = dx + dy;  /* error value e_xy */
-		while (true){   /* loop */
-			this->_points.push_back({ x1, y1 });
-			if( x1 == x2 && y1 == y2) break;
-			int e2 = e1 << 1;
-			if (e2 >= dy){
-				e1 += dy; /* e_xy+e_x > 0 */
-				x1 += sx;
-			}
-			if (e2 <= dx){ /* e_xy+e_y < 0 */
-				e1 += dx;
-				y1 += sy;
-			}
-		}
 	}
 
 	void set_size(T width, T height) {};
@@ -65,7 +43,9 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        this->build();
+        this->_x1 = point.get_x(), this->_y1 = point.get_y();
+        this->_x2 += _x1, this->_y2 += _y1;
+        this->_build();
 	}
 
     void rotate(int angle)
@@ -85,6 +65,29 @@ public:
 
 private:
 	T _x1, _y1, _x2, _y2;
+
+	void _build(void)
+	{
+        T x1 = _x1, y1 = _y1, x2 = _x2, y2 = _y2;
+		T dx = std::abs(x2 - x1),
+            sx = x1 < x2 ? 1 : -1,
+			dy = -std::abs(y2 - y1),
+			sy = y1 < y2 ? 1 : -1,
+			e1 = dx + dy;  /* error value e_xy */
+		while (true){   /* loop */
+			this->_points.push_back({ x1, y1 });
+			if( x1 == x2 && y1 == y2) break;
+			int e2 = e1 << 1;
+			if (e2 >= dy){
+				e1 += dy; /* e_xy+e_x > 0 */
+				x1 += sx;
+			}
+			if (e2 <= dx){ /* e_xy+e_y < 0 */
+				e1 += dx;
+				y1 += sy;
+			}
+		}
+	}
 
 };
 

@@ -15,42 +15,19 @@ public:
 	ParableT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		build(x, y, rx, ry);
+		this->_build();
 	}
 
 	ParableT(T x, T y, T rx, T ry, const Color& color)
 		:  _x(x), _y(y), _rx(rx), _ry(ry)
 	{
 		this->set_color(color.get_rgba());
-		build(x, y, rx, ry);
+		this->_build();
 	}
 
 	~ParableT()
 	{
 		this->_points.clear();
-	}
-
-	void build(T x, T y, T rx, T ry)
-	{
-        // FIX: bad calculation
-		// Middle point algorithm based
-		T x0 = 0, y0 = 0, p0 = 1;
-		this->_points.insert(this->_points.end(), {{(x + x0), (y + y0)}, {(x - x0), (y + y0)}});
-		while (x0 < x) {
-			++x0;
-			if (p0 < 0)
-				++p0;
-			else {
-				++y0;
-				p0 -= (y0 << 1) + 1;
-			}
-			this->_points.insert(this->_points.end(), {
-				{(x + x0), (y + y0)}, {(x - x0), (y + y0)}
-			});
-		}
-#ifdef __DEBUG
-    for (auto i : this->_points) std::cout << i;
-#endif // __DEBUG
 	}
 
 	void set_size(T width, T height){}
@@ -68,7 +45,8 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        // this->draw();
+        this->_x = point.get_x(), this->_y = point.get_y();
+        this->_build();
 	}
 
     void rotate(int angle)
@@ -88,6 +66,30 @@ public:
 
 private:
 	T _x, _y, _rx, _ry;
+
+	void _build(void)
+	{
+        // FIX: bad calculation
+		// Middle point algorithm based
+		T x = _x, y = _y, rx = _rx, ry = _ry;
+		T x0 = 0, y0 = 0, p0 = 1;
+		this->_points.insert(this->_points.end(), {{(x + x0), (y + y0)}, {(x - x0), (y + y0)}});
+		while (x0 < x) {
+			++x0;
+			if (p0 < 0)
+				++p0;
+			else {
+				++y0;
+				p0 -= (y0 << 1) + 1;
+			}
+			this->_points.insert(this->_points.end(), {
+				{(x + x0), (y + y0)}, {(x - x0), (y + y0)}
+			});
+		}
+#ifdef __DEBUG
+    for (auto i : this->_points) std::cout << i;
+#endif // __DEBUG
+	}
 
 };
 

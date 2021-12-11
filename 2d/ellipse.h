@@ -12,14 +12,14 @@ public:
 	EllipseT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		build(x, y, rx, ry);
+		this->_build();
 	}
 
 	EllipseT(T x, T y, T rx, T ry, const Color& color)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
 		this->set_color(color.get_rgba());
-		build(x, y, rx, ry);
+		this->_build();
 	}
 
 	~EllipseT()
@@ -27,8 +27,46 @@ public:
 		this->_points.clear();
 	}
 
-	void build(T xc, T yc, T rx, T ry)
+	void set_size(T width, T height) {}
+
+	double get_size(void) const
 	{
+		return 0;
+	}
+
+	double get_area(void) const
+	{
+		return 0;
+	}
+
+	void translate(const Point2DT<T>& point)
+	{
+        this->_points.clear();
+        this->_x = point.get_x(), this->_y = point.get_y();
+        this->_build();
+	}
+
+    void rotate(int angle)
+	{
+
+	}
+
+    EllipseT<T> &operator=(EllipseT<T> &ellipse)
+    {
+        _x = ellipse._x;
+        _y = ellipse._y;
+        _rx = ellipse._rx;
+        _ry = ellipse._ry;
+
+        return *this;
+    }
+
+private:
+	T _x, _y, _rx, _ry;
+
+	void _build(void)
+	{
+        T xc = _x, yc = _y, rx = _rx, ry = _ry;
 		T x = 0;
 		T y = ry;
 		T ry2 = ry * ry;
@@ -72,42 +110,6 @@ public:
         for (auto i : this->_points) std::cout << i;
 #endif // __DEBUG
 	}
-
-	void set_size(T width, T height) {}
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-        this->_points.clear();
-        // this->draw();
-	}
-
-    void rotate(int angle)
-	{
-
-	}
-
-    EllipseT<T> &operator=(EllipseT<T> &ellipse)
-    {
-        _x = ellipse._x;
-        _y = ellipse._y;
-        _rx = ellipse._rx;
-        _ry = ellipse._ry;
-
-        return *this;
-    }
-
-private:
-	T _x, _y, _rx, _ry;
 
 };
 

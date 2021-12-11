@@ -13,7 +13,6 @@ class Shape2DT : public Shape {
 public:
 	Shape2DT() {}
 	virtual ~Shape2DT() {}
-	virtual void build(T x1, T y1, T x2, T y2) = 0;
 	virtual double get_area(void) const = 0;
 	virtual void translate(const Point2DT<T>& point) = 0;
     virtual void rotate(int angle) = 0;
@@ -25,6 +24,7 @@ public:
 protected:
 	std::vector<Point2DT<T>> _points;
 
+	virtual void _build(void) = 0;
 	template <typename U>
 	friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point);
 

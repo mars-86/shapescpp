@@ -15,7 +15,7 @@
 
 1639086009 /home/mariano/Documents/Programming/C++/shapes/color/rgb.h
 
-1639249114 source:/home/mariano/Documents/Programming/C++/shapes/main.cpp
+1639249252 source:/home/mariano/Documents/Programming/C++/shapes/main.cpp
 	<iostream>
 	<vector>
 	"shapes.h"
@@ -29,11 +29,11 @@
 	"2d/rect.h"
 	"2d/square.h"
 
-1639247897 /home/mariano/Documents/Programming/C++/shapes/2d/circle.h
+1639251759 /home/mariano/Documents/Programming/C++/shapes/2d/circle.h
 	<cmath>
 	"../base/shape2d.h"
 
-1639249106 /home/mariano/Documents/Programming/C++/shapes/base/shape2d.h
+1639251510 /home/mariano/Documents/Programming/C++/shapes/base/shape2d.h
 	<vector>
 	"shape.h"
 	"../coords/point2d.h"
@@ -44,20 +44,20 @@
 
 1638378652 /home/mariano/Documents/Programming/C++/shapes/coords/point2d.h
 
-1639247905 /home/mariano/Documents/Programming/C++/shapes/2d/ellipse.h
+1639251926 /home/mariano/Documents/Programming/C++/shapes/2d/ellipse.h
 	"../base/shape2d.h"
 
-1639248421 /home/mariano/Documents/Programming/C++/shapes/2d/line.h
+1639251497 /home/mariano/Documents/Programming/C++/shapes/2d/line.h
 	<cmath>
 	"../base/shape2d.h"
 
-1639249038 /home/mariano/Documents/Programming/C++/shapes/2d/parable.h
+1639251997 /home/mariano/Documents/Programming/C++/shapes/2d/parable.h
 	<cmath>
 	<iostream>
 	"../base/shape2d.h"
 	"../coords/point2d.h"
 
-1639249065 /home/mariano/Documents/Programming/C++/shapes/2d/rect.h
+1639252168 /home/mariano/Documents/Programming/C++/shapes/2d/rect.h
 	<vector>
 	"../base/shape2d.h"
 	"line.h"

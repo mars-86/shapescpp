@@ -14,43 +14,19 @@ public:
 	RectT(T x, T y, T width, T height)
 		: _x(x), _y(y), _w(width), _h(height)
 	{
-		build(x, y, width, height);
+		this->_build();
 	}
 
 	RectT(T x, T y, T width, T height, const Color& color)
 		: _x(x), _y(y), _w(width), _h(height)
 	{
 		this->set_color(color.get_rgba());
-		build(x, y, width, height);
+		this->_build();
 	}
 
 	virtual ~RectT()
 	{
 		this->_points.clear();
-	}
-
-	void build(T x, T y, T width, T height)
-	{
-		std::vector<Point2DT<T>> e1 = Line(x, y, x + width, y).get_bounds();
-		std::vector<Point2DT<T>> e2 = Line(x + width, y + 1, x + width, y + height - 1).get_bounds();
-		std::vector<Point2DT<T>> e3 = Line(x + width, y + height, x, y + height).get_bounds();
-		std::vector<Point2DT<T>> e4 = Line(x, y + height - 1, x, y + 1).get_bounds();
-
-#ifdef __DEBUG
-		for (auto i : e1) std::cout << i;
-		std::cout << '\n';
-		for (auto i : e2) std::cout << i;
-		std::cout << '\n';
-		for (auto i : e3) std::cout << i;
-		std::cout << '\n';
-        for (auto i : e4) std::cout << i;
-        std::cout << '\n';
-#endif // __DEBUG
-
-		this->_points.insert(this->_points.end(), e1.begin(), e1.end());
-		this->_points.insert(this->_points.end(), e2.begin(), e2.end());
-		this->_points.insert(this->_points.end(), e3.begin(), e3.end());
-		this->_points.insert(this->_points.end(), e4.begin(), e4.end());
 	}
 
 	void set_size(T width, T height) {};
@@ -78,7 +54,8 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        this->build(point.get_x(), point.get_y(), this->get_width(), this->get_height());
+        this->_x = point.get_x(), this->_y = point.get_y();
+        this->_build();
 	}
 
 	void rotate(int angle)
@@ -98,6 +75,31 @@ public:
 
 protected:
 	T _x, _y, _w, _h;
+
+    void _build(void)
+	{
+        T x = _x, y = _y, width = _w, height = _h;
+		std::vector<Point2DT<T>> e1 = Line(x, y, x + width, y).get_bounds();
+		std::vector<Point2DT<T>> e2 = Line(x + width, y + 1, x + width, y + height - 1).get_bounds();
+		std::vector<Point2DT<T>> e3 = Line(x + width, y + height, x, y + height).get_bounds();
+		std::vector<Point2DT<T>> e4 = Line(x, y + height - 1, x, y + 1).get_bounds();
+
+#ifdef __DEBUG
+		for (auto i : e1) std::cout << i;
+		std::cout << '\n';
+		for (auto i : e2) std::cout << i;
+		std::cout << '\n';
+		for (auto i : e3) std::cout << i;
+		std::cout << '\n';
+        for (auto i : e4) std::cout << i;
+        std::cout << '\n';
+#endif // __DEBUG
+
+		this->_points.insert(this->_points.end(), e1.begin(), e1.end());
+		this->_points.insert(this->_points.end(), e2.begin(), e2.end());
+		this->_points.insert(this->_points.end(), e3.begin(), e3.end());
+		this->_points.insert(this->_points.end(), e4.begin(), e4.end());
+	}
 
 };
 

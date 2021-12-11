@@ -13,14 +13,14 @@ public:
 	CircleT(T x, T y, T radius)
 		: _x(x), _y(y), _radius(radius)
 	{
-		build(x, y, radius);
+		this->_build();
 	}
 
 	CircleT(T x, T y, T radius, const Color& color)
 		: _x(x), _y(y), _radius(radius)
 	{
 		this->set_color(color.get_rgba());
-		build(x, y, radius);
+		this->_build();
 	}
 
 	CircleT(T x, T y, T radius, const Color& color, const Color& inner_color)
@@ -28,7 +28,7 @@ public:
 	{
 		this->set_color(color.get_rgba());
 		this->set_inner_color(inner_color.get_rgba());
-		build(x, y, radius);
+		this->_build();
 	}
 
 	~CircleT()
@@ -36,11 +36,48 @@ public:
 		this->_points.clear();
 	}
 
-	void build(T x, T y, T radius, T _ = 0)
+	void set_size(T width, T height) {}
+
+	double get_size(void) const
 	{
-		T x0 = 0,
-        y0 = radius,
-        p0 = 1 - radius; // 5 / 4 - r
+		return 0;
+	}
+
+	double get_area(void) const
+	{
+		return 0;
+	}
+
+	void translate(const Point2DT<T>& point)
+	{
+        this->_points.clear();
+        this->_x = point.get_x(), this->_y = point.get_y();
+        this->_build();
+	}
+
+    void rotate(int angle)
+	{
+
+	}
+
+    CircleT<T> &operator=(CircleT<T> &circle)
+    {
+        _x = circle._x;
+        _y = circle._y;
+        _radius = circle._radius;
+
+        return *this;
+    }
+
+private:
+	T _x, _y, _radius;
+
+    void _build(void)
+	{
+		T x = _x, y = _y, radius = _radius,
+            x0 = 0,
+            y0 = radius,
+            p0 = 1 - radius; // 5 / 4 - r
         this->_points.insert(this->_points.end(), {
             {x + x0, y + y0}, {x - x0, y - y0/* - 1*/}
         });
@@ -65,41 +102,6 @@ public:
         for (auto i : this->_points) std::cout << i;
 #endif // __DEBUG
 	}
-
-	void set_size(T width, T height) {}
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-        this->_points.clear();
-        this->build(point.get_x(), point.get_y(), this->_radius);
-	}
-
-    void rotate(int angle)
-	{
-
-	}
-
-    CircleT<T> &operator=(CircleT<T> &circle)
-    {
-        _x = circle._x;
-        _y = circle._y;
-        _radius = circle._radius;
-
-        return *this;
-    }
-
-private:
-	T _x, _y, _radius;
 
 };
 
