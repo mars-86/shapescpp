@@ -71,6 +71,9 @@ public:
 				{ (xc - x), (yc + y) }, { (xc - x), (yc - y) }
 			});
 		}
+#ifdef __DEBUG
+        for (auto i : this->_points) std::cout << i;
+#endif // __DEBUG
 	}
 
 	void set_size(T width, T height) {}
