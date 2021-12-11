@@ -87,6 +87,9 @@ private:
 				y1 += sy;
 			}
 		}
+#ifdef __DEBUG
+    for (auto i : this->_points) std::cout << i;
+#endif // __DEBUG
 	}
 
 };
