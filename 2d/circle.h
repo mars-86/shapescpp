@@ -10,9 +10,6 @@ namespace shapes {
 template <typename T>
 class CircleT : public Shape2DT<T> {
 public:
-	CircleT()
-		: _x(0), _y(0), _radius(0) {}
-
 	CircleT(T x, T y, T radius)
 		: _x(x), _y(y), _radius(radius)
 	{
@@ -23,6 +20,14 @@ public:
 		: _x(x), _y(y), _radius(radius)
 	{
 		this->set_color(color.get_rgba());
+		build(x, y, radius);
+	}
+
+	CircleT(T x, T y, T radius, const Color& color, const Color& inner_color)
+		: _x(x), _y(y), _radius(radius)
+	{
+		this->set_color(color.get_rgba());
+		this->set_inner_color(inner_color.get_rgba());
 		build(x, y, radius);
 	}
 
@@ -83,15 +88,6 @@ public:
 	{
 
 	}
-
-    void fill(const Color& color)
-    {
-        int psize = _points.size()
-        if (psize < 1) return;
-        std::vector<Point2DT<T>>::iterator it = _points.at(1);
-        for (auto i = it; i < psize; ++i)
-            while (*(i - 1).get_y() < (*i).get_y()) _points
-    }
 
     CircleT<T> &operator=(CircleT<T> &circle)
     {

@@ -11,9 +11,6 @@ namespace shapes {
 template <typename T>
 class RectT : public Shape2DT<T> {
 public:
-	RectT()
-		: _x(0), _y(0), _w(0), _h(0) {}
-
 	RectT(T x, T y, T width, T height)
 		: _x(x), _y(y), _w(width), _h(height)
 	{
@@ -88,11 +85,6 @@ public:
 	{
 
 	}
-
-    void fill(const Color& color)
-    {
-
-    }
 
     RectT<T> &operator=(RectT<T> &rect)
     {

@@ -10,9 +10,6 @@ namespace shapes {
 template <typename T>
 class SquareT : public RectT<T> {
 public:
-	SquareT()
-		: RectT<T>() {}
-
 	SquareT(T x, T y, T size)
 		: RectT<T>(x, y, size, size) {}
 

@@ -17,7 +17,7 @@ public:
 	virtual double get_area(void) const = 0;
 	virtual void translate(const Point3DT<T>& point) = 0;
 	virtual void rotate(int angle, int axis) = 0;
-    virtual void fill(const Color& color) = 0;
+    virtual void fill(void) = 0;
 
 	const std::vector<Point3DT<T>>& get_bounds(void) const { return _points; }
 	const Point3DT<T>& get_origin(void) const { return _points[0]; }
@@ -25,6 +25,7 @@ public:
 
 protected:
 	std::vector<Point3DT<T>> _points;
+
 	template <typename U>
 	friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point);
 

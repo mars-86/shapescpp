@@ -12,9 +12,6 @@ namespace shapes {
 template <typename T>
 class ParableT : public Shape2DT<T> {
 public:
-	ParableT()
-		: _x(0), _y(0), _rx(0), _ry(0) {}
-
 	ParableT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
@@ -78,11 +75,6 @@ public:
 	{
 
 	}
-
-    void fill(const Color& color)
-    {
-
-    }
 
     ParableT<T> &operator=(ParableT<T> &parable)
     {

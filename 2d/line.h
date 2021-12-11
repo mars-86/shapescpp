@@ -10,11 +10,8 @@ namespace shapes {
 template <typename T>
 class LineT : public Shape2DT<T> {
 public:
-	LineT()
-		: _x1(0), _y1(0), _x2(0), _y2(0) {}
-
 	LineT(T x1, T y1, T x2, T y2)
-		: _x1(0), _y1(0), _x2(0), _y2(0)
+		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
 	{
 		build(x1, y1, x2, y2);
 	}
@@ -68,15 +65,13 @@ public:
 	void translate(const Point2DT<T>& point)
 	{
         this->_points.clear();
-        // this->draw();
+        this->build();
 	}
 
     void rotate(int angle)
 	{
 
 	}
-
-    void fill(const Color& color) {}
 
     LineT<T> &operator=(LineT<T> &line)
     {

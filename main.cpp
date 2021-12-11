@@ -9,7 +9,9 @@ using namespace shapes;
 int main(void)
 {
     // Square rect(10, 10, 5);
-    Parable parab(40, 40, 50, 100);
+    Circle circ(40, 40, 5);
+    std::cout << std::endl;
+    circ.build(20, 20, 7);
     // Ellipse ell(40, 40, 5, 5);
 
 
