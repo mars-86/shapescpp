@@ -71,7 +71,7 @@ private:
 	{
         // FIX: bad calculation
 		// Middle point algorithm based
-		T x = _x, y = _y, rx = _rx, ry = _ry;
+		T x = _x, y = _y; // , rx = _rx, ry = _ry;
 		T x0 = 0, y0 = 0, p0 = 1;
 		this->_points.insert(this->_points.end(), {{(x + x0), (y + y0)}, {(x - x0), (y + y0)}});
 		while (x0 < x) {

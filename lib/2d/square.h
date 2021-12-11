@@ -2,7 +2,6 @@
 #define _SHAPES_2D_SQUARE_INCLUDED_H_
 #pragma once
 
-#include <vector>
 #include "rect.h"
 
 namespace shapes {
