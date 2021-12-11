@@ -24,6 +24,14 @@ public:
 		this->_build();
 	}
 
+	RectT(T x, T y, T width, T height, const Color& color, const Color& inner_color)
+		: _x(x), _y(y), _w(width), _h(height)
+	{
+		this->set_color(color.get_rgba());
+		this->set_inner_color(inner_color.get_rgba());
+		this->_build();
+	}
+
 	virtual ~RectT()
 	{
 		this->_points.clear();

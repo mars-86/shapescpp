@@ -22,6 +22,14 @@ public:
 		this->_build();
 	}
 
+	EllipseT(T x, T y, T rx, T ry, const Color& color, const Color& inner_color)
+		: _x(x), _y(y), _rx(rx), _ry(ry)
+	{
+		this->set_color(color.get_rgba());
+		this->set_inner_color(inner_color.get_rgba());
+		this->_build();
+	}
+
 	~EllipseT()
 	{
 		this->_points.clear();

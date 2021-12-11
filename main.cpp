@@ -12,7 +12,6 @@ int main(void)
     Circle circ(40, 40, 5);
     // Ellipse ell(40, 40, 5, 5);
 
-
     // auto b = rect.get_bounds();
     // for (auto i : b) std::cout << "{" << i.get_x() << " " << i.get_y() << "}";
 
