@@ -2,7 +2,6 @@
 #define _SHAPES_2D_SQUARE_INCLUDED_H_
 #pragma once
 
-#include <vector>
 #include "rect.h"
 
 namespace shapes {
@@ -10,21 +9,14 @@ namespace shapes {
 template <typename T>
 class SquareT : public RectT<T> {
 public:
-	SquareT()
-		: RectT<T>() {}
-
 	SquareT(T x, T y, T size)
-		: RectT<T>(x, y, size, size)
-	{
-		this->draw(x, y, size, size);
-	}
+		: RectT<T>(x, y, size, size) {}
 
 	SquareT(T x, T y, T size, const Color& color)
-		: RectT<T>(x, y, size, size)
-	{
-		this->set_color(color.get_rgba());
-		this->draw(x, y, size, size);
-	}
+		: RectT<T>(x, y, size, size, color.get_rgba()) {}
+
+    SquareT(T x, T y, T size, const Color& color, const Color& inner_color)
+		: RectT<T>(x, y, size, size, color.get_rgba(), inner_color.get_rgba()) {}
 
 	~SquareT() {}
 };

@@ -9,15 +9,16 @@ namespace shapes {
 
 class Shape {
 public:
-	Shape() : _color({0, 0, 0, 0}) {}
+	Shape() : _color({0, 0, 0, 0}), _inner_color({0, 0, 0, 0}) {}
 	virtual ~Shape(){}
-	virtual void draw(int x1, int y1, int x2, int y2) = 0;
 	virtual void set_size(int width, int height) = 0;
 	virtual double get_size(void) const = 0;
 	virtual void set_color(const RGBA& color) { _color.set_rgba(color); }
 	virtual const Color& get_color(void) const { return _color; }
+	virtual void set_inner_color(const RGBA& inner_color) { _inner_color.set_rgba(inner_color); }
+	virtual const Color& get_inner_color(void) const { return _inner_color; }
 protected:
-	Color _color;
+	Color _color, _inner_color;
 };
 
 } // namespace shapes

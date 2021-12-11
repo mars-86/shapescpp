@@ -15,19 +15,29 @@ public:
 	virtual ~Shape2DT() {}
 	virtual double get_area(void) const = 0;
 	virtual void translate(const Point2DT<T>& point) = 0;
-	//std::vector<Point2DT<T>>& get_points(void) { return _points; }
+    virtual void rotate(int angle) = 0;
+
 	const std::vector<Point2DT<T>>& get_bounds(void) const { return _points; }
-	const Point2DT<T>& get_origin(void) const { return _points[0]; }
+	const Point2DT<T>& get_origin(void) const { return _points.front(); }
+    int length(void) const { return this->_points.size(); }
+
 protected:
 	std::vector<Point2DT<T>> _points;
-	friend std::ostream& operator<<(std::ostream& out, const Point2DT<T>& point)
-	{
-		return out << "{" << point.get_x() << ", " << point.get_y() << "}" << std::endl;
-	}
+
+	virtual void _build(void) = 0;
+	template <typename U>
+	friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point);
+
 };
 
 typedef Shape2DT<int> Shape2D;
 typedef Shape2DT<double> Shape2DF;
+
+template <typename T>
+std::ostream& operator<<(std::ostream& out, const Point2DT<T>& point)
+{
+    return out << "{" << point.get_x() << "," << point.get_y() << "}";
+}
 
 } // namespace shapes
 
