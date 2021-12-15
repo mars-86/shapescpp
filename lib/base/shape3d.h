@@ -2,6 +2,7 @@
 #define _SHAPES_BASE_SHAPE_3D_INCLUDED_H_
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include "shape.h"
 #include "../coords/point3d.h"
@@ -13,13 +14,10 @@ class Shape3DT : public Shape {
 public:
 	Shape3DT() {}
 	virtual ~Shape3DT() {}
-	virtual double get_area(void) const = 0;
-	virtual void translate(const Point3DT<T>& point) = 0;
-	virtual void rotate(int angle, int axis) = 0;
 
 	const std::vector<Point3DT<T>>& get_bounds(void) const { return _points; }
-	const Point3DT<T>& get_origin(void) const { return _points[0]; }
-	int length(void) const { this->_points.size(); }
+	const Point3DT<T>& get_center(void) const { return _center; }
+	unsigned int length(void) const { return _points.size(); }
 
 protected:
 	std::vector<Point3DT<T>> _points;

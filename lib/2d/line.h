@@ -13,44 +13,13 @@ public:
 	LineT(T x1, T y1, T x2, T y2)
 		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
 	{
-		_build();
-	}
-
-	LineT(T x1, T y1, T x2, T y2, const Color& color)
-		: _x1(x1), _y1(y1), _x2(x2), _y2(y2)
-	{
-		this->set_color(color.get_rgba());
-		_build();
+        this->_set_center({(x1 + x2) >> 1, (y1 + y2) >> 1});
+        _build();
 	}
 
 	~LineT()
 	{
 		this->_points.clear();
-	}
-
-	void set_size(T width, T height) {};
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-        this->_points.clear();
-        _x1 = point.get_x(), _y1 = point.get_y();
-        _x2 += _x1, _y2 += _y1;
-        _build();
-	}
-
-    void rotate(int angle)
-	{
-
 	}
 
     LineT<T> &operator=(LineT<T> &line)

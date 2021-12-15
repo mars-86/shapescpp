@@ -12,12 +12,6 @@ public:
 	SquareT(T x, T y, T size)
 		: RectT<T>(x, y, size, size) {}
 
-	SquareT(T x, T y, T size, const Color& color)
-		: RectT<T>(x, y, size, size, color.get_rgba()) {}
-
-    SquareT(T x, T y, T size, const Color& color, const Color& inner_color)
-		: RectT<T>(x, y, size, size, color.get_rgba(), inner_color.get_rgba()) {}
-
 	~SquareT() {}
 };
 

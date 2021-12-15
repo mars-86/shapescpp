@@ -1,6 +1,8 @@
 #ifndef _SHAPES_COORDS_POINT_2D_INCLUDED_H_
 #define _SHAPES_COORDS_POINT_2D_INCLUDED_H_
 
+#include <ostream>
+
 namespace shapes {
 
 template <typename T>
@@ -74,6 +76,12 @@ public:
 	bool operator==(const Point2DT<U> &new_p)
 	{
         return ((_x == new_p.get_x()) && (_y == new_p.get_y())) ? true : false;
+    }
+
+    template <typename U>
+    friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point)
+    {
+        return out << "{" << point.get_x() << ", " << point.get_y() << "}";
     }
 
 protected:

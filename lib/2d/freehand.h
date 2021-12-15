@@ -14,47 +14,12 @@ public:
 	FreeHandT(const std::vector<Point2DT<T>> &points)
 		: _local_points(points)
     {
-		_build();
-	}
-
-	FreeHandT(const std::vector<Point2DT<T>> &points, const Color& color)
-		: _local_points(points)
-    {
-        this->set_color(color.get_rgba());
-		_build();
-	}
-
-    FreeHandT(const std::vector<Point2DT<T>> &points, const Color& color, const Color& inner_color)
-        : _local_points(points)
-    {
-        this->set_color(color.get_rgba());
-		this->set_inner_color(inner_color.get_rgba());
+        // FIX
+        this->_set_center({0, 0});
 		_build();
 	}
 
 	~FreeHandT() { this->_points.clear(); }
-
-    void set_size(T width, T height) {};
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-
-	}
-
-    void rotate(int angle)
-	{
-
-	}
 
 private:
     std::vector<Point2DT<T>> _local_points;

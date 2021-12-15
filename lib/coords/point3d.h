@@ -14,6 +14,78 @@ public:
 
 	void set_z( T z ) { _z = z; }
 	T get_z(void) const { return _z; }
+
+    /* Operator overloading */
+	template <typename U>
+	Point3DT<U> operator+(const Point3DT<U> &new_p)
+	{
+        return Point3DT<U>(this->_x + new_p.get_x(), this->_y + new_p.get_y(), _z + new_p.get_z());
+    }
+
+    template <typename U>
+	Point3DT<U> operator-(const Point3DT<U> &new_p)
+	{
+        return Point3DT<U>(this->_x - new_p.get_x(), this->_y - new_p.get_y(), _z - new_p.get_z());
+    }
+
+    template <typename U>
+	Point3DT<U> operator*(const Point3DT<U> &new_p)
+	{
+        return Point3DT<U>(this->_x * new_p.get_x(), this->_y * new_p.get_y(), _z * new_p.get_z());
+    }
+
+    template <typename U>
+	Point3DT<U> &operator+=(const Point3DT<U> &new_p)
+	{
+        this->_x += new_p.get_x();
+        this->_y += new_p.get_y();
+        _z += new_p.get_z();
+
+        return *this;
+    }
+
+    template <typename U>
+	Point3DT<U> &operator-=(const Point3DT<U> &new_p)
+	{
+        this->_x -= new_p.get_x();
+        this->_y -= new_p.get_y();
+        _z -= new_p.get_z();
+
+        return *this;
+    }
+
+    template <typename U>
+	Point3DT<U> &operator*=(const Point3DT<U> &new_p)
+	{
+        this->_x *= new_p.get_x();
+        this->_y *= new_p.get_y();
+        _z *= new_p.get_z();
+
+        return *this;
+    }
+
+    template <typename U>
+	Point3DT<U> &operator=(const Point3DT<U> &new_p)
+	{
+        this->_x = new_p.get_x();
+        this->_y = new_p.get_y();
+        _z = new_p.get_z();
+
+        return *this;
+    }
+
+    template <typename U>
+	bool operator==(const Point3DT<U> &new_p)
+	{
+        return ((this->_x == new_p.get_x()) && (this->_y == new_p.get_y()) && (_z == new_p.get_z())) ? true : false;
+    }
+
+    template <typename U>
+    friend std::ostream& operator<<(std::ostream& out, const Point3DT<U>& point)
+    {
+        return out << "{" << point.get_x() << ", " << point.get_y() << ", " << point.get_z() << "}" << std::endl;
+    }
+
 private:
 	T _z;
 };
