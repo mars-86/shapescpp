@@ -1,6 +1,8 @@
 #ifndef _SHAPES_COORDS_POINT_2D_INCLUDED_H_
 #define _SHAPES_COORDS_POINT_2D_INCLUDED_H_
 
+#include <ostream>
+
 namespace shapes {
 
 template <typename T>
@@ -14,8 +16,77 @@ public:
 	T get_x(void) const { return _x; }
 	void set_y( T y ) { _y = y; }
 	T get_y(void) const { return _y; }
+
+	/* Operator overloading */
+	template <typename U>
+	Point2DT<U> operator+(const Point2DT<U> &new_p)
+	{
+        return Point2DT<U>(_x + new_p.get_x(), _y + new_p.get_y());
+    }
+
+    template <typename U>
+	Point2DT<U> operator-(const Point2DT<U> &new_p)
+	{
+        return Point2DT<U>(_x - new_p.get_x(), _y - new_p.get_y());
+    }
+
+    template <typename U>
+	Point2DT<U> operator*(const Point2DT<U> &new_p)
+	{
+        return Point2DT<U>(_x * new_p.get_x(), _y * new_p.get_y());
+    }
+
+    template <typename U>
+	Point2DT<U> &operator+=(const Point2DT<U> &new_p)
+	{
+        _x += new_p.get_x();
+        _y += new_p.get_y();
+
+        return *this;
+    }
+
+    template <typename U>
+	Point2DT<U> &operator-=(const Point2DT<U> &new_p)
+	{
+        _x -= new_p.get_x();
+        _y -= new_p.get_y();
+
+        return *this;
+    }
+
+    template <typename U>
+	Point2DT<U> &operator*=(const Point2DT<U> &new_p)
+	{
+        _x *= new_p.get_x();
+        _y *= new_p.get_y();
+
+        return *this;
+    }
+
+    template <typename U>
+	Point2DT<U> &operator=(const Point2DT<U> &new_p)
+	{
+        _x = new_p.get_x();
+        _y = new_p.get_y();
+
+        return *this;
+    }
+
+    template <typename U>
+	bool operator==(const Point2DT<U> &new_p)
+	{
+        return ((_x == new_p.get_x()) && (_y == new_p.get_y())) ? true : false;
+    }
+
+    template <typename U>
+    friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point)
+    {
+        return out << "{" << point.get_x() << ", " << point.get_y() << "}";
+    }
+
 protected:
 	T _x, _y;
+
 };
 
 typedef Point2DT<int> Point2D;

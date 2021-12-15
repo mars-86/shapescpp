@@ -12,32 +12,16 @@ template <typename T>
 class RectT : public Shape2DT<T> {
 public:
 	RectT(T x, T y, T width, T height)
-		: _x(x), _y(y), _w(width), _h(height)
+		: _x(x - (width >> 1)), _y(y - (height >> 1)), _w(width), _h(height)
 	{
-		_build();
-	}
-
-	RectT(T x, T y, T width, T height, const Color& color)
-		: _x(x), _y(y), _w(width), _h(height)
-	{
-		this->set_color(color.get_rgba());
-		_build();
-	}
-
-	RectT(T x, T y, T width, T height, const Color& color, const Color& inner_color)
-		: _x(x), _y(y), _w(width), _h(height)
-	{
-		this->set_color(color.get_rgba());
-		this->set_inner_color(inner_color.get_rgba());
-		_build();
+        this->_set_center({x, y});
+        _build();
 	}
 
 	virtual ~RectT()
 	{
 		this->_points.clear();
 	}
-
-	void set_size(T width, T height) {};
 
 	T get_width(void) const
 	{
@@ -47,28 +31,6 @@ public:
 	T get_height(void) const
 	{
 		return _h;
-	}
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-        this->_points.clear();
-        _x = point.get_x(), _y = point.get_y();
-        _build();
-	}
-
-	void rotate(int angle)
-	{
-
 	}
 
     RectT<T> &operator=(RectT<T> &rect)

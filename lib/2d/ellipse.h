@@ -12,51 +12,13 @@ public:
 	EllipseT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		_build();
-	}
-
-	EllipseT(T x, T y, T rx, T ry, const Color& color)
-		: _x(x), _y(y), _rx(rx), _ry(ry)
-	{
-		this->set_color(color.get_rgba());
-		_build();
-	}
-
-	EllipseT(T x, T y, T rx, T ry, const Color& color, const Color& inner_color)
-		: _x(x), _y(y), _rx(rx), _ry(ry)
-	{
-		this->set_color(color.get_rgba());
-		this->set_inner_color(inner_color.get_rgba());
+        this->_set_center({x, y});
 		_build();
 	}
 
 	~EllipseT()
 	{
 		this->_points.clear();
-	}
-
-	void set_size(T width, T height) {}
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-        this->_points.clear();
-        _x = point.get_x(), _y = point.get_y();
-        _build();
-	}
-
-    void rotate(int angle)
-	{
-
 	}
 
     EllipseT<T> &operator=(EllipseT<T> &ellipse)

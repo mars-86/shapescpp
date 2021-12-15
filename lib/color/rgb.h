@@ -4,10 +4,14 @@
 
 namespace shapes {
 
-typedef struct _RGBA {
+typedef struct _RGB {
 	unsigned char r;
 	unsigned char g;
 	unsigned char b;
+} RGB;
+
+typedef struct _RGBA {
+	RGB rgb;
 	unsigned char a;
 } RGBA;
 

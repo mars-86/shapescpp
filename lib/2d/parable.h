@@ -15,43 +15,13 @@ public:
 	ParableT(T x, T y, T rx, T ry)
 		: _x(x), _y(y), _rx(rx), _ry(ry)
 	{
-		_build();
-	}
-
-	ParableT(T x, T y, T rx, T ry, const Color& color)
-		:  _x(x), _y(y), _rx(rx), _ry(ry)
-	{
-		this->set_color(color.get_rgba());
+        this->_set_center({x, y});
 		_build();
 	}
 
 	~ParableT()
 	{
 		this->_points.clear();
-	}
-
-	void set_size(T width, T height){}
-
-	double get_size(void) const
-	{
-		return 0;
-	}
-
-	double get_area(void) const
-	{
-		return 0;
-	}
-
-	void translate(const Point2DT<T>& point)
-	{
-        this->_points.clear();
-        _x = point.get_x(), _y = point.get_y();
-        _build();
-	}
-
-    void rotate(int angle)
-	{
-
 	}
 
     ParableT<T> &operator=(ParableT<T> &parable)
