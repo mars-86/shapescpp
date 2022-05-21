@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-D__DEBUG" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,20 +33,21 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="2d/circle.h" />
-		<Unit filename="2d/ellipse.h" />
-		<Unit filename="2d/line.h" />
-		<Unit filename="2d/parable.h" />
-		<Unit filename="2d/rect.h" />
-		<Unit filename="2d/square.h" />
-		<Unit filename="base/shape.h" />
-		<Unit filename="base/shape2d.h" />
-		<Unit filename="base/shape3d.h" />
-		<Unit filename="color/color.cpp" />
-		<Unit filename="color/color.h" />
-		<Unit filename="color/rgb.h" />
-		<Unit filename="coords/point2d.h" />
-		<Unit filename="coords/point3d.h" />
+		<Unit filename="lib/2d/circle.h" />
+		<Unit filename="lib/2d/ellipse.h" />
+		<Unit filename="lib/2d/freehand.h" />
+		<Unit filename="lib/2d/line.h" />
+		<Unit filename="lib/2d/parable.h" />
+		<Unit filename="lib/2d/rect.h" />
+		<Unit filename="lib/2d/square.h" />
+		<Unit filename="lib/base/shape.h" />
+		<Unit filename="lib/base/shape2d.h" />
+		<Unit filename="lib/base/shape3d.h" />
+		<Unit filename="lib/color/color.cpp" />
+		<Unit filename="lib/color/color.h" />
+		<Unit filename="lib/color/rgb.h" />
+		<Unit filename="lib/coords/point2d.h" />
+		<Unit filename="lib/coords/point3d.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="shapes.h" />
 		<Extensions>
