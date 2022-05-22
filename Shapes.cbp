@@ -48,7 +48,6 @@
 		<Unit filename="lib/color/rgb.h" />
 		<Unit filename="lib/coords/point2d.h" />
 		<Unit filename="lib/coords/point3d.h" />
-		<Unit filename="main.cpp" />
 		<Unit filename="shapes.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
