@@ -44,6 +44,10 @@ private:
 			sy = y1 < y2 ? 1 : -1,
 			e1 = dx + dy;  /* error value e_xy */
 		while (true){   /* loop */
+#ifdef __DEBUG
+            std::cout << "x1:" << x1 << " y1:" << y1 << " e1:" << e1 << std::endl;
+            std::getchar();
+#endif // __DEBUG
 			this->_points.push_back({ x1, y1 });
 			if( x1 == x2 && y1 == y2) break;
 			int e2 = e1 << 1;

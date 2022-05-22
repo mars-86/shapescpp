@@ -80,11 +80,11 @@ public:
         return ((this->_x == new_p.get_x()) && (this->_y == new_p.get_y()) && (_z == new_p.get_z())) ? true : false;
     }
 
-    template <typename U>
+    /* template <typename U>
     friend std::ostream& operator<<(std::ostream& out, const Point3DT<U>& point)
     {
         return out << "{" << point.get_x() << ", " << point.get_y() << ", " << point.get_z() << "}" << std::endl;
-    }
+    } */
 
 private:
 	T _z;

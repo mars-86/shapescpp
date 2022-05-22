@@ -21,7 +21,9 @@ public:
 
 protected:
 	std::vector<Point3DT<T>> _points;
+    Point3DT<T> _center;
 
+	void _set_center(const Point3DT<T> center) { _center = center; }
 	virtual void _build(void) = 0;
 	template <typename U>
 	friend std::ostream& operator<<(std::ostream& out, const Point2DT<U>& point);
