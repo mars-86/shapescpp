@@ -6,6 +6,8 @@
 
 namespace shapes {
 
+namespace _3D {
+
 template <typename T>
 class CubeT : public HyperrectT<T> {
 public:
@@ -17,6 +19,8 @@ public:
 
 typedef CubeT<int> Cube;
 typedef CubeT<double> CubeF;
+
+} // namespace _3D
 
 } // namespace shapes
 
